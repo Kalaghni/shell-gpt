@@ -1,0 +1,12 @@
+directories:
+  output: releases
+  buildResources: build
+appId: com.joshwood.shellgpt
+win:
+  target: nsis
+linux:
+  target: snap
+mac:
+  target: dmg
+files: []
+electronVersion: 36.5.0

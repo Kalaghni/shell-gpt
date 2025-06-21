@@ -78,6 +78,9 @@
     },
     "linux": {
       "target": "snap"
+    },
+    "mac": {
+      "target": "dmg"
     }
   }
 }
