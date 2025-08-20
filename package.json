@@ -12,8 +12,11 @@
   "scripts": {
     "dev": "concurrently \"vite\" \"cross-env DEV= tsc-watch -p tsconfig.electron.json --onSuccess \\\"electron .\\\"\"",
     "preview": "vite build && tsc -p tsconfig.electron.json && cross-env PREVIEW= electron .",
-    "build": "vite build && tsc -p tsconfig.electron.json && electron-builder",
-    "build:linux": "vite build && tsc -p tsconfig.electron.json && electron-builder build --linux deb tar.xz"
+    "build:app": "vite build && tsc -p tsconfig.electron.json",
+    "build": "npm run build:app && electron-builder",
+    "build:mac": "npm run build:app && electron-builder --mac",
+    "build:win": "npm run build:app && electron-builder --win",
+    "build:linux": "npm run build:app && electron-builder --linux"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
