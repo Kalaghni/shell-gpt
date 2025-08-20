@@ -26,11 +26,27 @@ function createWindow() {
             nodeIntegration: true,
         },
         titleBarStyle: "hidden",
-        titleBarOverlay: {
+        trafficLightPosition: {
+
+            x: 700,
+            y: 20
+        },
+        titleBarOverlay: (process.platform !== "darwin" ? {
             ...getColors(),
             height: 55
-        }
+        } : {})
     });
+
+    if (process.platform === "darwin") {
+        mainWindow.on('resize', () => {
+            const [width] = mainWindow!.getSize()
+            mainWindow?.setWindowButtonPosition({
+                y: 20,
+                x: width - 100
+            })
+        })
+    }
+
     if (isDev) {
         mainWindow.loadURL("http://localhost:5173");
         // ^^^^ make sure this port
